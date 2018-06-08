@@ -1,0 +1,124 @@
+.mainWindow {
+	-fx-background-color: #F0F0F0;
+}
+
+#patient {
+	-fx-background-color: #FFFFFF;
+}
+
+.image {
+	-fx-padding: 0 20 0 0
+}
+
+.headerBox {
+	-fx-padding:0 50 0 0;
+}
+
+.headerLabel {
+	-fx-font-size:20px;
+	-fx-font-weight:bold;
+}
+
+.italicLabel {
+	-fx-font-size:15px;
+	-fx-padding:2 0 0 0;
+}
+
+.statusLabel {
+	-fx-font-size:16px;
+	-fx-text-fill: green;
+	-fx-font-weight:bold;
+}
+
+.normalLabel {
+	-fx-font-size:14px;
+}
+
+.lion {
+    -fx-background-color: 
+        rgba(0,0,0,0.08),
+        linear-gradient(#9a9a9a, #909090),
+        linear-gradient(white 0%, #f3f3f3 50%, #ececec 51%, #f2f2f2 100%);
+    -fx-background-insets: 0 0 -1 0,0,1;
+    -fx-background-radius: 5,5,4;
+    -fx-padding: 3 30 3 30;
+    -fx-text-fill: #242d35;
+    -fx-font-size: 14px;
+}
+
+.separator {
+	-fx-border-style: solid; 
+	-fx-border-color: #C7C7C7;
+}
+
+.infoBar {
+	-fx-padding:20 0 20 0;
+	-fx-background-color: #B9D1EA;
+}
+
+.formLabel {
+	-fx-font-size:15px;
+	-fx-padding:9 0 9 0;
+}
+
+.formValue {
+	-fx-font-size:16px;
+	-fx-font-weight:bold;
+	-fx-padding: 0 30 0 5;
+    -fx-border-insets: 6;
+    -fx-background-insets: 6;
+    -fx-border-style: solid; 
+    -fx-border-color: #C7C7C7;
+}
+
+.formValue:readonly,
+.formText:readonly {
+    -fx-background-color:#F0F0F0;
+} 
+
+.patientButton {
+	-fx-background-radius: 0; 
+	-fx-border-color:#F0F0F0;
+	-fx-background-color:#F0F0F0;
+}
+
+.patientButton:selected {
+	-fx-background-color:#B9D1EA;
+}
+
+.patientForm {
+	-fx-padding: 80 40 40 40;
+}
+
+.formText {
+	-fx-font-size:16px;
+	-fx-font-weight:bold;
+	-fx-padding: 5 5 5 5;
+    -fx-border-insets: 6;
+    -fx-background-insets: 6;
+    -fx-border-style: solid; 
+    -fx-border-color: #C7C7C7;
+    -fx-hbar-policy: never;
+    -fx-vbar-policy: never;
+}
+
+/* Default row background is black */
+.table-row-cell {
+    -fx-background-color: white;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #B9D1EA; 
+    
+}
+
+.table-row-cell:selected .text {
+       -fx-fill: black ;
+}
+
+.patientSelectButton {
+    -fx-border-insets: 6;
+    -fx-background-insets: 6;
+    -fx-border-style: solid; 
+    -fx-border-color: #C7C7C7;
+}

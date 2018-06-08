@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+			fx:controller="com.answerdigital.thick.controller.PatientDialogController"
+			styleClass="patient">
+	<VBox styleClass="headerBox" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0">
+		<FlowPane styleClass="headerFlow" orientation="HORIZONTAL" prefWrapLength="1000">
+	        <ImageView>	
+	        	<image>
+	        		<Image url="@image.png"/>
+	        	</image>
+	        </ImageView>
+	        <VBox styleClass="headerBox">
+		    	<Label styleClass="headerLabel" text="Endeavour Health"/>
+		    	<Label styleClass="normalLabel" text="Charitable Trust"/>
+		    </VBox>
+		</FlowPane>
+	</VBox>
+	<VBox styleClass="headerBox" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="0.0">
+		<Label styleClass="headerLabel" text="Choose Patient"/>
+	</VBox>
+	<VBox fx:id="patientList" AnchorPane.topAnchor="100.0" AnchorPane.leftAnchor="0.0" prefWidth="${patientList.parent.width}" prefHeight="450.0">
+		<TableView fx:id="tableView" styleClass="patientTable" >   
+		    <columns>
+		        <TableColumn prefWidth="150.0" text="Name" fx:id="name" />
+		        <TableColumn prefWidth="75.0" text="Born" fx:id="born" />
+		        <TableColumn prefWidth="400.0" text="Address" fx:id="address" />
+		        <TableColumn prefWidth="75.0" text="NHS Number" fx:id="nhsNumber" />
+		        <TableColumn prefWidth="150.0" text="Organisation" fx:id="organisation" />
+		    </columns>
+	    </TableView>
+	    <HBox fx:id="patientButtons" prefWidth="${patientButtons.parent.width}" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+	    	<Pane HBox.hgrow="ALWAYS" />
+	    	<Button fx:id="cancelButton" styleClass="patientSelectButton" text="Cancel" />
+		    <Button fx:id="openButton" styleClass="patientSelectButton" text="Open" />
+	    </HBox>
+    </VBox>
+</AnchorPane>
