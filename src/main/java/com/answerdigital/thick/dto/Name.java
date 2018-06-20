@@ -7,6 +7,17 @@ public class Name {
 	private String[] given;
 	private String[] prefix;
 	
+	public Name() {
+		
+	}
+	
+	public Name(String use, String family, String[] given, String[] prefix) {
+		this.use = use;
+		this.family = family;
+		this.given = given;
+		this.prefix = prefix;
+	}
+	
 	public String getUse() {
 		return use;
 	}

@@ -13,16 +13,16 @@
 		<FlowPane styleClass="headerFlow" orientation="HORIZONTAL" prefWrapLength="600">
 	        <ImageView style="image">	
 	        	<image>
-	        		<Image url="@endeavour.png"/>
+	        		<Image url="@logo.jpg"/>
 	        	</image>
 	        </ImageView>
 	        <VBox styleClass="headerBox">
-		    	<Label styleClass="headerLabel" text="Endeavour Health"/>
+		    	<Label styleClass="headerLabel" text="Vitality Health"/>
 		    	<Label styleClass="normalLabel" text="Charitable Trust"/>
 		    </VBox>
 		    <VBox styleClass="headerBox">
-		    	<Label styleClass="headerLabel" text="GP System Demonstrator"/>
-		    	<Label styleClass="normalLabel" text="For the Common Context Patient Project"/>
+		    	<Label styleClass="headerLabel" text="GP System"/>
+		    	<Label styleClass="normalLabel" text="For the Patient Project"/>
 		    </VBox>
 	    </FlowPane>
     </VBox>
@@ -42,6 +42,7 @@
     		  AnchorPane.topAnchor="90.0" AnchorPane.leftAnchor="0.0" orientation="HORIZONTAL"/>
     <FlowPane AnchorPane.topAnchor="115.0" AnchorPane.leftAnchor="20.0" orientation="HORIZONTAL">
     	<Button styleClass="lion" text="Open Patient Record" onAction="#showPatientDialog" /> <!--onAction="#doSomething"/>-->
+    	<Button styleClass="lion" text="Clear Patient Record" onAction="#clearPatientContext" /> <!--onAction="#doSomething"/>-->
     </FlowPane>
     <FlowPane fx:id="patientBanner" AnchorPane.topAnchor="150.0" AnchorPane.leftAnchor="0.0" orientation="HORIZONTAL" 
     		   prefWidth="${patientBanner.parent.width}" styleClass="infoBar">
@@ -54,6 +55,10 @@
     	<Label fx:id="bannerNhsNumber" styleClass="formValue"/>
     	<Label styleClass="italicLabel" text="Organisation" />
     	<Label fx:id="bannerOrganisation" styleClass="formValue"/>
+    </FlowPane>
+    <FlowPane fx:id="nullPatientBanner" AnchorPane.topAnchor="150.0" AnchorPane.leftAnchor="0.0" orientation="HORIZONTAL" 
+    		   prefWidth="${patientBanner.parent.width}" styleClass="infoBar">
+    	<Label fx:id="bannerNullPatient" styleClass="formValue" text="No Patient Selected"/>
     </FlowPane>
     <FlowPane AnchorPane.topAnchor="230.0" prefHeight="30" AnchorPane.leftAnchor="5.0" orientation="HORIZONTAL">
     	<ToggleButton styleClass="patientButton" selected="true" text="Demographics" >

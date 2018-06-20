@@ -14,6 +14,7 @@ public class Patient extends ResponseDTO {
 	private String birthDate;
 	private Address[] address;
 	private MaritalStatus maritalStatus;
+	private CoreGp gp;
 	
 	public Boolean isActive() {
 		return active;
@@ -93,6 +94,12 @@ public class Patient extends ResponseDTO {
 	
 	public Name getPrimaryName() {
 		return name[0];
+	}
+	public CoreGp getGp() {
+		return gp;
+	}
+	public void setGp(CoreGp gp) {
+		this.gp = gp;
 	}
 
 }

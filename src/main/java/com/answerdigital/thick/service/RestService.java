@@ -2,7 +2,10 @@ package com.answerdigital.thick.service;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,20 +15,38 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.Base64Utils;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import com.answerdigital.thick.dto.Authentication;
+import com.answerdigital.thick.dto.CorePatient;
 import com.answerdigital.thick.dto.Entry;
 import com.answerdigital.thick.dto.ResponseDTO;
 import com.answerdigital.thick.dto.SearchDTO;
+import com.answerdigital.thick.mapper.CorePatientToPatientPropertyMapper;
 
 public abstract class RestService<DTO extends ResponseDTO> {
 
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	@Autowired
+	private CorePatientToPatientPropertyMapper mapper;
+	
 	@Value("${base.url}")
 	private String baseUrl;
+	
+	@Value("${auth.url}")
+	private String authUrl;
+	
+	@Value("${client.secret}")
+	private String clientSecret;
+	
+	@Value("${client.id}")
+	private String clientId;
 	
 	@Value("${patient.namespace}")
 	private String patientNamespace;
@@ -38,20 +59,43 @@ public abstract class RestService<DTO extends ResponseDTO> {
 	
 	private Class<DTO> clazz;
 	
+	private String accessToken;
+	
 	public RestService(Class<DTO> clazz) {
 		this.clazz = clazz;
 	}
 	
-	public List<DTO> readAll() {
-		List<DTO> dtos = new ArrayList<>();
-		String url = MessageFormat.format("{0}{1}", baseUrl, clazz.getSimpleName());
-		SearchDTO searchDto = restTemplate.getForObject(url, SearchDTO.class);
+	@PostConstruct
+	public void login() {
+		HttpHeaders header = new HttpHeaders();
+		header.add("Authorization", "Basic " + Base64Utils.encodeToString((clientId + "::" + clientSecret).getBytes()));
 		
-		if (searchDto.getEntry() != null) {
-			for (Entry entry : searchDto.getEntry()) {
-				dtos.add(restTemplate.getForObject(entry.getFullUrl(), clazz));
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+		params.add("username", "john.smith1");
+		params.add("password", "password");
+		params.add("grant_type", "password");
+		params.add("client_id", clientId);
+		params.add("client_secret", clientSecret);
+		
+		HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(params, header);
+				
+		ResponseEntity<Authentication> auth = restTemplate.exchange(authUrl, HttpMethod.POST, httpEntity, Authentication.class);
+		accessToken = auth.getBody().getAccess_token();
+	}
+	
+	public List<DTO> readAll() {
+		
+		HttpHeaders header = new HttpHeaders();
+		header.add("Authorization", "Bearer " + accessToken);
+		HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(header);
+		
+		List<DTO> dtos = new ArrayList<>();
+		ResponseEntity<CorePatient[]> response = restTemplate.exchange(baseUrl, HttpMethod.GET, httpEntity, CorePatient[].class);
+		
+			for (CorePatient patient : Arrays.asList(response.getBody())) {
+				
+				dtos.add((DTO) mapper.map(patient));
 			}
-		}
 		
 		return dtos;
 	}

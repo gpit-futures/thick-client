@@ -100,12 +100,16 @@ public class PatientDialogController implements Initializable {
 	private void changePatient() {
 		Patient patient = tableView.getSelectionModel().getSelectedItem();
 		
-		if (!patient.getNhsNumber().equals(mainController.getPatient().getNhsNumber())) {
+		if (mainController.getPatient() != null && !patient.getNhsNumber().equals(mainController.getPatient().getNhsNumber())) {
 			mainController.setPatient(patient); 
 		}
 		
 		mainController.sendMessage(patient);
 		
+	}
+	
+	public void changePatient(Patient patient) {
+		mainController.setPatient(patient);
 	}
 	
 }

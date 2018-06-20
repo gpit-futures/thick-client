@@ -6,6 +6,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Configuration
 @PropertySources({
 	@PropertySource(value="classpath:application-env.properties"),
@@ -17,4 +19,10 @@ public class ApplicationConfig {
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
+	
+	@Bean
+	public ObjectMapper objectMapper() {
+		return new ObjectMapper();
+	}
+	
 }
