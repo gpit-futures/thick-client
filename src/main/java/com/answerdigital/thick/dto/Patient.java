@@ -1,9 +1,17 @@
 package com.answerdigital.thick.dto;
 
+
 import java.text.MessageFormat;
 import java.util.Objects;
 
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
+
+import com.answerdigital.pcaap.dto.ResponseDTO;
+import com.answerdigital.pcaap.dto.Name;
+import com.answerdigital.pcaap.dto.Telecom;
+import com.answerdigital.pcaap.dto.Address;
+import com.answerdigital.pcaap.dto.MaritalStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Patient extends ResponseDTO {
 	
@@ -65,33 +73,34 @@ public class Patient extends ResponseDTO {
 		this.maritalStatus = maritalStatus;
 	}
 	
+	@JsonIgnore
 	public String getFormattedName() {
 		return MessageFormat.format("{0}, {1} ({2})", 
 				name[0].getFamily().toUpperCase(), 
 				StringUtils.capitalize(name[0].getGiven()[0]), StringUtils.capitalize(name[0].getPrefix()[0]));
 	}
-	
+	@JsonIgnore
 	public String getFormattedAddress() {
 		return getFormattedAddress(false);
 	}
-	
+	@JsonIgnore
 	public String getLineFormattedAddress() {
 		return getFormattedAddress(true);
 	}
-	
+	@JsonIgnore
 	private String getFormattedAddress(boolean singleLine) {
 		return String.join("," + (singleLine ? " " : "\n"), address[0].getLine()[0], Objects.toString(address[0].getCity(), ""), 
 				Objects.toString(address[0].getDistrict(), ""), Objects.toString(address[0].getPostalCode(), ""));
 	}
-	
+	@JsonIgnore
 	public String getNhsNumber() {
 		return getIdentifier()[0].getValue();
 	}
-	
+	@JsonIgnore
 	public String getOrganisation() {
 		return "Alpha Surgery";
 	}
-	
+	@JsonIgnore
 	public Name getPrimaryName() {
 		return name[0];
 	}

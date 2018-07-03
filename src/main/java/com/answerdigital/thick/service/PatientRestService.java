@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.answerdigital.thick.dto.Patient;
+import com.answerdigital.pcaap.dto.Patient;
 
 @Service
 public class PatientRestService extends RestService<Patient> {

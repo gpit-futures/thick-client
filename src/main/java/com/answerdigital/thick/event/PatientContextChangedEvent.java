@@ -1,6 +1,6 @@
 package com.answerdigital.thick.event;
 
-import com.answerdigital.thick.dto.Patient;
+import com.answerdigital.pcaap.dto.Patient;
 
 public class PatientContextChangedEvent {
 	private Patient patient;

@@ -1,5 +1,8 @@
 package com.answerdigital.thick.dto;
 
+import com.answerdigital.pcaap.dto.CoreGp;
+
+
 public class CorePatient
 {
     private String dateOfBirth;

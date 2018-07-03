@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.answerdigital.thick.dto.Patient;
+import com.answerdigital.pcaap.dto.Patient;
 
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.event.EventHandler;
@@ -100,7 +100,7 @@ public class PatientDialogController implements Initializable {
 	private void changePatient() {
 		Patient patient = tableView.getSelectionModel().getSelectedItem();
 		
-		if (mainController.getPatient() != null && !patient.getNhsNumber().equals(mainController.getPatient().getNhsNumber())) {
+		if (mainController.getPatient() == null || !patient.getNhsNumber().equals(mainController.getPatient().getNhsNumber())) {
 			mainController.setPatient(patient); 
 		}
 		

@@ -11,7 +11,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.web.client.RestClientException;
 
 import com.answerdigital.thick.FXMLApplication;
-import com.answerdigital.thick.dto.Patient;
+import com.answerdigital.pcaap.dto.Patient;
 import com.answerdigital.thick.event.PatientContextChangedEvent;
 import com.answerdigital.thick.service.MessageService;
 import com.answerdigital.thick.service.PatientRestService;
@@ -216,10 +216,7 @@ public class MainController implements Initializable {
 	}
 	
 	protected void sendMessage(Patient patient) {
-		try {
 			messageService.publish(patient);
-		} catch (AmqpException e) {
-		}
 	}
 	
 	private void attachEvents() {

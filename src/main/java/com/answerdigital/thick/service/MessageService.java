@@ -1,50 +1,77 @@
 package com.answerdigital.thick.service;
 
-import org.springframework.amqp.core.Message;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.channels.NotYetConnectedException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
-import com.answerdigital.thick.dto.Patient;
+import com.answerdigital.client.connector.ClientConnector;
+import com.answerdigital.pcaap.dto.Patient;
 import com.answerdigital.thick.event.PatientContextChangedEvent;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Service
 public class MessageService {
-
-	@Autowired
-	private RabbitTemplate rabbitTemplate;
 	
 	@Autowired
 	private ApplicationContext context;
 	
-	@Value("${patient.exchange.key}")
-    private String patientExchangeKey;
+	@Value("frame.socket")
+	private String frameSocket;
 	
-	@Value("${patient.context.changed.key}")
-    private String patientContextChangedKey;
+	@Autowired
+	private ObjectMapper objectMapper;
 	
-	@Value("${patient.context.ended.key}")
-    private String patientContextEndedKey;
+	private ClientConnector clientConnector;
+
 	
-	public void publish(Patient patient) {
-		if(patient != null) {
-			rabbitTemplate.convertAndSend(patientExchangeKey, patientContextChangedKey, patient);
-		} else {
-			rabbitTemplate.convertAndSend(patientExchangeKey, patientContextEndedKey, "patient-context:ended");
+	public MessageService() {
+		try {
+			clientConnector = new ClientConnector(new URI("ws://localhost:1040")) {
+				@Override
+				public void onMessage( String message ) {
+					System.out.println( "test overide: " + message );
+					
+					if (message == null) {
+						context.publishEvent(new PatientContextChangedEvent(null));
+					} else {
+						Patient test = null;
+						try {
+							test = objectMapper.readValue(message, Patient.class);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						context.publishEvent(new PatientContextChangedEvent(test));
+					}
+				}
+			};
+			clientConnector.connectBlocking();
+			clientConnector.sendPatientEnded();
+			
+		} catch (URISyntaxException | NotYetConnectedException | InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
-	
-	@RabbitListener(queues = {"patient-context-changed-queue"})
-	public void recievePatientContext(Patient patient) {
-		context.publishEvent(new PatientContextChangedEvent(patient));
-	}
-	
-	@RabbitListener(queues = {"patient-context-ended-queue"})
-	public void recievePatientContextEnded(byte[] message) {
-		context.publishEvent(new PatientContextChangedEvent(null));
+
+
+	public void publish(Patient patient) {
+		
+		try {
+			if(patient != null) {
+				clientConnector.sendPatientContext(patient);
+			} else {
+				clientConnector.sendPatientEnded();
+			}
+			Thread.sleep( 10 );
+		} catch (InterruptedException | NotYetConnectedException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

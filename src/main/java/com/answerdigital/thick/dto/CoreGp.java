@@ -1,5 +1,6 @@
 package com.answerdigital.thick.dto;
 
+
 public class CoreGp
 {
     private CoreAddress address;

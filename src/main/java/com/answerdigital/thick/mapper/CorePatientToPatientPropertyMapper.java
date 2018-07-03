@@ -2,12 +2,12 @@ package com.answerdigital.thick.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.answerdigital.thick.dto.Address;
+import com.answerdigital.pcaap.dto.Address;
+import com.answerdigital.pcaap.dto.Identifier;
+import com.answerdigital.pcaap.dto.Name;
+import com.answerdigital.pcaap.dto.Patient;
+import com.answerdigital.pcaap.dto.Telecom;
 import com.answerdigital.thick.dto.CorePatient;
-import com.answerdigital.thick.dto.Identifier;
-import com.answerdigital.thick.dto.Name;
-import com.answerdigital.thick.dto.Patient;
-import com.answerdigital.thick.dto.Telecom;
 
 @Component
 public class CorePatientToPatientPropertyMapper {

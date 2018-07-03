@@ -21,11 +21,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
-import com.answerdigital.thick.dto.Authentication;
+import com.answerdigital.pcaap.dto.Authentication;
 import com.answerdigital.thick.dto.CorePatient;
-import com.answerdigital.thick.dto.Entry;
-import com.answerdigital.thick.dto.ResponseDTO;
-import com.answerdigital.thick.dto.SearchDTO;
+import com.answerdigital.pcaap.dto.Entry;
+import com.answerdigital.pcaap.dto.ResponseDTO;
+import com.answerdigital.pcaap.dto.SearchDTO;
 import com.answerdigital.thick.mapper.CorePatientToPatientPropertyMapper;
 
 public abstract class RestService<DTO extends ResponseDTO> {
