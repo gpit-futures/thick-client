@@ -38,6 +38,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.answerdigital.GpIt</groupId>
+			<artifactId>PCaaP-Fhir-DTOs</artifactId>
+			<version>1.0.0-Release</version>
+		</dependency>
+		<dependency>
+			<groupId>com.answerdigital.gpit</groupId>
+			<artifactId>client-connector</artifactId>
+			<version>1.0.0-Release</version>
+		</dependency>
 	</dependencies>
 	<!-- using spring boot build pattern -->
 	<build>
@@ -45,9 +55,6 @@
             <plugin>
 			    <groupId>org.springframework.boot</groupId>
 			    <artifactId>spring-boot-maven-plugin</artifactId>
-			    <configuration>    
-	                <mainClass>com.answerdigital.thick.FXMLApplication</mainClass>
-	            </configuration>
 			</plugin>
 		</plugins>
 		<outputDirectory>target/classes</outputDirectory>
