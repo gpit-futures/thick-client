@@ -10,13 +10,13 @@
 			styleClass="patient">
 	<VBox styleClass="headerBox" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0">
 		<FlowPane styleClass="headerFlow" orientation="HORIZONTAL" prefWrapLength="1000">
-	        <ImageView>	
+	        <ImageView style="image">	
 	        	<image>
-	        		<Image url="@image.png"/>
+	        		<Image url="@logo.jpg"/>
 	        	</image>
 	        </ImageView>
 	        <VBox styleClass="headerBox">
-		    	<Label styleClass="headerLabel" text="Endeavour Health"/>
+		    	<Label styleClass="headerLabel" text="Vitality Health"/>
 		    	<Label styleClass="normalLabel" text="Charitable Trust"/>
 		    </VBox>
 		</FlowPane>

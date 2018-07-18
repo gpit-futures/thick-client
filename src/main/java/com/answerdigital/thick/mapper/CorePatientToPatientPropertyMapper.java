@@ -18,14 +18,27 @@ public class CorePatientToPatientPropertyMapper {
 		
 		patient.setResourceType("Patient");
 		patient.setId(corePatient.getId());
-		patient.setIdentifier(new Identifier[] {new Identifier("https://fhir.nhs.uk/Id/nhs-number", corePatient.getNhsNumber())});
+		patient.setIdentifier(new Identifier[] {
+				new Identifier("https://fhir.nhs.uk/Id/nhs-number", corePatient.getNhsNumber())});
+		
 		patient.setActive(true);
-		patient.setName(new Name[] {new Name("usual", corePatient.getLastName(), new String[] {corePatient.getFirstName()}, new String[] {corePatient.getTitle()})});
-		patient.setTelecom(new Telecom[] {new Telecom("phone", corePatient.getPhone(), "home")});
+		patient.setName(new Name[] {
+				new Name("usual", corePatient.getLastName(), new String[] {
+						corePatient.getFirstName()}, new String[] {corePatient.getTitle()})});
+		
+		patient.setTelecom(new Telecom[] {
+				new Telecom("phone", corePatient.getPhone(), "home")});
+		
+		patient.setGp(corePatient.getGp());
 		patient.setGender(corePatient.getGender());
 		patient.setBirthDate(corePatient.getDateOfBirth());
-		patient.setAddress(new Address[] {new Address("work", "both", new String[] {corePatient.getAddress().getLine1(), corePatient.getAddress().getLine2()}, corePatient.getAddress().getLine3(), corePatient.getAddress().getLine4(), corePatient.getAddress().getPostcode())});
-		patient.setGp(corePatient.getGp());
+		patient.setAddress(new Address[] {
+				new Address("work", "both", new String[] {
+						corePatient.getAddress().getLine1(), 
+						corePatient.getAddress().getLine2()}, 
+						corePatient.getAddress().getLine3(), 
+						corePatient.getAddress().getLine4(), 
+						corePatient.getAddress().getPostcode())});
 		
 		return patient;
 	}

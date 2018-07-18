@@ -39,10 +39,10 @@
 	    </FlowPane>
     </VBox>
     <FlowPane styleClass="separator" fx:id="node" prefWidth="${node.parent.width}" 
-    		  AnchorPane.topAnchor="90.0" AnchorPane.leftAnchor="0.0" orientation="HORIZONTAL"/>
-    <FlowPane AnchorPane.topAnchor="115.0" AnchorPane.leftAnchor="20.0" orientation="HORIZONTAL">
+    		  AnchorPane.topAnchor="90.0" AnchorPane.leftAnchor="0.0" orientation="HORIZONTAL">
     	<Button styleClass="lion" text="Open Patient Record" onAction="#showPatientDialog" /> <!--onAction="#doSomething"/>-->
     	<Button styleClass="lion" text="Clear Patient Record" onAction="#clearPatientContext" /> <!--onAction="#doSomething"/>-->
+    	<Button fx:id="showAvailableAppointmentsButton" styleClass="lion" text="Create Appointment" onAction="#showAvailableAppointmentsDialog" />
     </FlowPane>
     <FlowPane fx:id="patientBanner" AnchorPane.topAnchor="150.0" AnchorPane.leftAnchor="0.0" orientation="HORIZONTAL" 
     		   prefWidth="${patientBanner.parent.width}" styleClass="infoBar">

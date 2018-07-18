@@ -31,7 +31,7 @@ import com.answerdigital.thick.mapper.CorePatientToPatientPropertyMapper;
 public abstract class RestService<DTO extends ResponseDTO> {
 
 	@Autowired
-	private RestTemplate restTemplate;
+	protected RestTemplate restTemplate;
 	
 	@Autowired
 	private CorePatientToPatientPropertyMapper mapper;
@@ -83,6 +83,7 @@ public abstract class RestService<DTO extends ResponseDTO> {
 		accessToken = auth.getBody().getAccess_token();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<DTO> readAll() {
 		
 		HttpHeaders header = new HttpHeaders();

@@ -103,9 +103,7 @@ public class PatientDialogController implements Initializable {
 		if (mainController.getPatient() != null && !patient.getNhsNumber().equals(mainController.getPatient().getNhsNumber())) {
 			mainController.setPatient(patient); 
 		}
-		
 		mainController.sendMessage(patient);
-		
 	}
 	
 	public void changePatient(Patient patient) {

@@ -15,6 +15,7 @@ import com.answerdigital.thick.dto.Patient;
 import com.answerdigital.thick.event.PatientContextChangedEvent;
 import com.answerdigital.thick.service.MessageService;
 import com.answerdigital.thick.service.PatientRestService;
+import com.answerdigital.thick.view.AvailableAppointmentsDialogView;
 import com.answerdigital.thick.view.PatientDialogView;
 
 import de.felixroske.jfxsupport.FXMLController;
@@ -27,6 +28,7 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -104,6 +106,9 @@ public class MainController implements Initializable {
 	@FXML
 	private FlowPane nullPatientBanner;
 	
+	@FXML
+	private Button showAvailableAppointmentsButton;
+	
 	private ObjectProperty<Patient> patient = new SimpleObjectProperty<>();
 	
 	@Autowired
@@ -123,6 +128,10 @@ public class MainController implements Initializable {
         FXMLApplication.showView(PatientDialogView.class, javafx.stage.Modality.APPLICATION_MODAL);
 	}
 	
+	public void showAvailableAppointmentsDialog(Event event) throws IOException {
+        FXMLApplication.showView(AvailableAppointmentsDialogView.class, javafx.stage.Modality.APPLICATION_MODAL);
+	}
+	
 	public void clearPatientContext(Event event) throws IOException {
 		setPatient(null);
 		sendMessage(null);
@@ -140,6 +149,14 @@ public class MainController implements Initializable {
 		serverUrl.setText(baseUrl);
 		
 		patientBanner.setVisible(false);
+		showAvailableAppointmentsButton.setVisible(false);
+				
+		patient.addListener(new ChangeListener<Patient>() {
+			@Override
+			public void changed(ObservableValue<? extends Patient> observable, Patient oldValue, Patient newValue) {
+				showAvailableAppointmentsButton.setVisible(newValue != null);
+			}
+		});
 		
 		attachEvents();
 	}
@@ -231,4 +248,5 @@ public class MainController implements Initializable {
 			}
         });
 	}
+	
 }

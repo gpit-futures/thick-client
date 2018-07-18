@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" 
+			fx:controller="com.answerdigital.thick.controller.AvailableAppointmentsDialogController"
+			styleClass="patient">
+	<VBox styleClass="headerBox" prefHeight="110" AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0">
+		<FlowPane styleClass="headerFlow" orientation="HORIZONTAL" prefWrapLength="1000">
+	        <ImageView style="image">	
+	        	<image>
+	        		<Image url="@logo.jpg"/>
+	        	</image>
+	        </ImageView>
+	        <VBox styleClass="headerBox">
+		    	<Label styleClass="headerLabel" text="Vitality Health"/>
+		    	<Label styleClass="normalLabel" text="Charitable Trust"/>
+		    </VBox>
+	    	<fx:define>
+			    <ToggleGroup  fx:id="ods" />
+			</fx:define>    
+			<children>
+				<VBox styleClass="headerBox">
+				    <RadioButton styleClass="radio" text="This Practice" toggleGroup="$ods" fx:id="ods1"/>
+				</VBox>    
+				<VBox styleClass="headerBox">
+					<RadioButton styleClass="radio" text="That Practice" toggleGroup="$ods" fx:id="ods2"/>
+				</VBox>
+			</children> 
+		</FlowPane>
+	</VBox>
+	<VBox styleClass="headerBox" AnchorPane.topAnchor="20.0" AnchorPane.rightAnchor="0.0">
+		<Label styleClass="headerLabel" text="Book Appointment"/>
+	</VBox>
+</AnchorPane>
