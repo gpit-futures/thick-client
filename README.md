@@ -11,9 +11,9 @@
  - Build the project using the 'mvn clean install' command.
  - The JAR file to execute can be found in the /target directory.
 ### Dependencies
-- A working version of the [framework](../frame) in order to demonstrate patient context sharing between the two.
-- A working version of the [core module](../pulse) within the framework.
-- A working [authentication server](../auth-server)
+- A working version of the [framework](https://github.com/gpit-futures/frame) in order to demonstrate patient context sharing between the two.
+- A working version of the [core module](https://github.com/gpit-futures/pulse) within the framework.
+- A working [authentication server](https://github.com/gpit-futures/auth-server)
 ### Configuration
 All configuration for the application can be found in... **{root_directory}/src/main/resources/application-env.properties**
 Below is a description of each properties function...
@@ -38,7 +38,7 @@ The format in which data is transferred between the thick-client and core, curre
 #### javafx.stage.resizable
 If set to true the application window can be resized, risking layout issues.  If set to false the window size remains fixed, preventing layout issues.
 ## Installation notes
-To install the thick client directly as an executable file simply download the [latest version](/releases) from Git Hub - note, that in order to show the communication between the systems, download the [framework](../frame/releases) as well.  
+To install the thick client directly as an executable file simply download the [latest version](/releases) from Git Hub - note, that in order to show the communication between the systems, download the [framework](https://github.com/gpit-futures/frame/releases) as well.  
 ## Demonstrator notes
 ### Accessing PCaaP PoC Demonstrator via a web-browser
 - The demonstrator is available by navigating to [https://clients.amazonworkspaces.com/webclient](https://clients.amazonworkspaces.com/webclient)
