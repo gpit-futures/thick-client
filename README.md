@@ -38,7 +38,7 @@ The format in which data is transferred between the thick-client and core, curre
 #### javafx.stage.resizable
 If set to true the application window can be resized, risking layout issues.  If set to false the window size remains fixed, preventing layout issues.
 ## Installation notes
-To install the thick client directly as an executable file simply download the [latest version](https://github.com/gpit-futures/releases) from Git Hub - note, that in order to show the communication between the systems, download the [framework](https://github.com/gpit-futures/frame/releases) as well.  
+To install the thick client directly as an executable file simply download the [latest version](https://github.com/gpit-futures/thick-client/releases) from Git Hub - note, that in order to show the communication between the systems, download the [framework](https://github.com/gpit-futures/frame/releases) as well.  
 ## Demonstrator notes
 ### Accessing PCaaP PoC Demonstrator via a web-browser
 - The demonstrator is available by navigating to [https://clients.amazonworkspaces.com/webclient](https://clients.amazonworkspaces.com/webclient)
