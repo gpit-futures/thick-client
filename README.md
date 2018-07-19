@@ -83,3 +83,4 @@ To install the thick client directly as an executable file simply download the [
 ## Demonstrator notes
 ### Accessing PCaaP PoC Demonstrator via a web-browser
 
+![Register](images/register.png)
