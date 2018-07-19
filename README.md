@@ -21,11 +21,11 @@ Below is a description of each properties function...
 #### base.url
 The URL for a working version of core, required to retrieve the same patient set available to the core module.  Only change the host part (in bold) or the system will fail...
 
-**http://ec2-18-130-26-44.eu-west-2.compute.amazonaws.com**/api/patients/detailed
+**http://ec2-18-130-26-44.eu-west-2.compute.amazonaws.com** /api/patients/detailed
 #### auth.url
 The URL for a working version of the authentication server, required to authenticate the user's access to core.  Again only change the host part of the resource...
 
-**http://ec2-18-130-14-227.eu-west-2.compute.amazonaws.com**/oauth/token
+**http://ec2-18-130-14-227.eu-west-2.compute.amazonaws.com** /oauth/token
 
 #### client.id
 The client application ID for use by the authentication server, **must not be changed or authentication will fail**.
