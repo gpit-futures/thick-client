@@ -82,5 +82,22 @@ If set to true the application window can be resized, risking layout issues.  If
 To install the thick client directly as an executable file simply download the [latest version](https://github.com/gpit-futures/thick-client/releases) from Git Hub - note, that in order to show the communication between the systems, download the [framework](https://github.com/gpit-futures/frame/releases) as well.  
 ## Demonstrator notes
 ### Accessing PCaaP PoC Demonstrator via a web-browser
-
+- The demonstrator is available by navigating to [https://clients.amazonworkspaces.com/webclient](https://clients.amazonworkspaces.com/webclient)
+- - Enter the following registration code and click the &#39;Register&#39; button; **Registration code: wsdub+9SHUU8**
 ![Register](images/register.png)
+- - Enter the following credentials and click the &#39;Sign In&#39; button.
+**Username: nhs\_digital**
+**Password: NH%D1G1TAL**
+![Sign In](images/sign_in.png)
+- Access is granted to the system and the desktop should now be visible in the browser.
+![Desktop](images/desktop.png)
+- Initialise the system by double clicking the icons indicated below;
+![Apps](images/desktop_icons.png)
+- - Electron: To initialise the Web Application (To use web version of core system)
+![Login](images/login.png)
+- - Spring Boot: To initialise the Thick Client Application (To use desktop version of core system)
+![Thick Client](images/thick-client.png)
+- To login as either user on the web application, the password is &#39;password&#39;.
+- Before closing the demonstrator, please ensure after use that **both application windows are closed before logging out.**
+- On closing the demonstrator, please select &#39;Disconnect&#39; from top navigation bar.
+![Logout](images/logout.png)
