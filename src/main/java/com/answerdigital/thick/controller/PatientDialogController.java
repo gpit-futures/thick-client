@@ -86,8 +86,8 @@ public class PatientDialogController implements Initializable {
 
 			@Override
 			public void handle(MouseEvent event) {
+				closeDialog();
 				changePatient();
-	            closeDialog();
 			}
 			
 		});

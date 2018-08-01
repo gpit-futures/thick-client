@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import org.springframework.amqp.AmqpException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.event.EventListener;
@@ -130,6 +129,7 @@ public class MainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		try {
 			patientList = FXCollections.observableArrayList(patientRestService.readAll());
 		} catch (RestClientException e) {
@@ -216,7 +216,7 @@ public class MainController implements Initializable {
 	}
 	
 	protected void sendMessage(Patient patient) {
-			messageService.publish(patient);
+			messageService.connectAndPublish();
 	}
 	
 	private void attachEvents() {

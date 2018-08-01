@@ -34,6 +34,9 @@ public abstract class RestService<DTO extends ResponseDTO> {
 	private RestTemplate restTemplate;
 	
 	@Autowired
+	private MessageService messageService;
+	
+	@Autowired
 	private CorePatientToPatientPropertyMapper mapper;
 	
 	@Value("${base.url}")
@@ -81,6 +84,8 @@ public abstract class RestService<DTO extends ResponseDTO> {
 				
 		ResponseEntity<Authentication> auth = restTemplate.exchange(authUrl, HttpMethod.POST, httpEntity, Authentication.class);
 		accessToken = auth.getBody().getAccess_token();
+		
+		messageService.connectAndLogin(accessToken);
 	}
 	
 	public List<DTO> readAll() {
