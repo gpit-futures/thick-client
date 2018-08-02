@@ -94,7 +94,7 @@ public class MessageService {
 	private void login(String accessToken) {
 		if (!connecting.get()) {
 			try {
-				clientConnector.send("{\"event\":\"token-context:changed\",\"data\":" + accessToken + "}");
+				clientConnector.send("{\"event\":\"token-context:changed\",\"data\":" + "\"" + accessToken + "\"}");
 				Thread.sleep( 10 );
 			} catch (WebsocketNotConnectedException | NotYetConnectedException | InterruptedException e) {
 				e.printStackTrace();
