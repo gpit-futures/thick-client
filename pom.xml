@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>guru.springframework</groupId>
 	<artifactId>spring-boot-web</artifactId>
-	<version>1.0.0-RELEASE</version>
+	<version>1.0.2-RELEASE</version>
 	<packaging>jar</packaging>
 	<name>Spring Boot Web Application</name>
 	<description>Spring Boot Web Application</description>
